@@ -1,0 +1,36 @@
+nohup: ignoring input
+/usr/local/lib/python3.11/site-packages/torch/cuda/__init__.py:56: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Ultralytics 8.3.248 🚀 Python-3.11.11 torch-2.3.1+cu121 CUDA:0 (NVIDIA A10, 22516MiB)
+[34m[1mengine/trainer: [0magnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=24, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=dataset.yaml, degrees=0.0, deterministic=True, device=0, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=100, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=/mnt/workspace/yolo11l.pt, momentum=0.937, mosaic=1.0, multi_scale=False, name=my_grad_project_A10_FINAL, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=None, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=/mnt/workspace/runs/detect/my_grad_project_A10_FINAL, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=10, workspace=None
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/ultralytics/engine/trainer.py", line 649, in get_dataset
+    data = check_det_dataset(self.args.data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ultralytics/data/utils.py", line 400, in check_det_dataset
+    file = check_file(dataset)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ultralytics/utils/checks.py", line 624, in check_file
+    raise FileNotFoundError(f"'{file}' does not exist")
+FileNotFoundError: 'dataset.yaml' does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/bin/yolo", line 8, in <module>
+    sys.exit(entrypoint())
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ultralytics/cfg/__init__.py", line 985, in entrypoint
+    getattr(model, mode)(**overrides)  # default args from model
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ultralytics/engine/model.py", line 768, in train
+    self.trainer = (trainer or self._smart_load("trainer"))(overrides=args, _callbacks=self.callbacks)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ultralytics/models/yolo/detect/train.py", line 63, in __init__
+    super().__init__(cfg, overrides, _callbacks)
+  File "/usr/local/lib/python3.11/site-packages/ultralytics/engine/trainer.py", line 163, in __init__
+    self.data = self.get_dataset()
+                ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ultralytics/engine/trainer.py", line 653, in get_dataset
+    raise RuntimeError(emojis(f"Dataset '{clean_url(self.args.data)}' error ❌ {e}")) from e
+RuntimeError: Dataset 'dataset.yaml' error ❌ 'dataset.yaml' does not exist
