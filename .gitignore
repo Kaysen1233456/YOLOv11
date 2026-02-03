@@ -1,4 +1,10 @@
-runs/
-.venv/
+venv/
+my_env/
 __pycache__/
-*.zip
+.ipynb_checkpoints/
+datasets/
+runs/
+*.pt
+*.pth
+*.onnx
+*.cache

@@ -1,0 +1,12 @@
+path: datasets/power_safety
+train: train/images
+val: val/images
+nc: 7
+names:
+  0: person
+  1: helmet_person
+  2: insulated_gloves
+  3: safety_belt
+  4: power_pole
+  5: voltage_tester
+  6: work_clothes
