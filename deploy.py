@@ -29,6 +29,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 import json
+from ui_theme import apply_light_print_theme
+from config_runtime import WEIGHTS_7CLS
 
 
 class SafetyDetectionDeploy:
@@ -63,6 +65,12 @@ class SafetyDetectionDeploy:
         print(f"加载模型: {self.weights_path}")
         try:
             self.model = YOLO(self.weights_path)
+            if self.model.names:
+                self.class_names = dict(self.model.names)
+                self.class_colors = {
+                    class_id: self.class_colors.get(class_id, (70, 70, 70))
+                    for class_id in self.class_names
+                }
             print("模型加载成功！")
         except Exception as e:
             print(f"模型加载失败: {e}")
@@ -287,6 +295,7 @@ def web_interface():
         layout="wide",
         initial_sidebar_state="expanded"
     )
+    apply_light_print_theme()
     
     st.title("⚡ YOLOv11 电力安全检测系统")
     st.markdown("基于YOLOv11的电力作业安全装备检测")
@@ -294,7 +303,7 @@ def web_interface():
     # 侧边栏配置
     with st.sidebar:
         st.header("检测配置")
-        weights_path = st.text_input("模型路径", value="runs/detect/train/weights/best.pt")
+        weights_path = st.text_input("模型路径", value=WEIGHTS_7CLS)
         conf_threshold = st.slider("置信度阈值", 0.0, 1.0, 0.25)
         iou_threshold = st.slider("IoU阈值", 0.0, 1.0, 0.45)
         
@@ -438,7 +447,7 @@ def main():
     parser.add_argument('--mode', type=str, default='web', 
                        choices=['web', 'batch', 'video', 'image'],
                        help='部署模式')
-    parser.add_argument('--weights', type=str, default='runs/detect/train/weights/best.pt',
+    parser.add_argument('--weights', type=str, default=WEIGHTS_7CLS,
                        help='模型权重路径')
     parser.add_argument('--source', type=str, help='输入源（图片/视频路径或目录）')
     parser.add_argument('--output', type=str, default='detection_results',

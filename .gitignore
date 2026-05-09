@@ -1,10 +1,12 @@
 venv/
+.venv/
 my_env/
 __pycache__/
 .ipynb_checkpoints/
 datasets/
 runs/
 *.pt
+!best.pt
 *.pth
 *.onnx
 *.cache

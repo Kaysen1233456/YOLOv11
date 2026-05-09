@@ -1,6 +1,7 @@
 # 使用清华镜像源安装: pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ultralytics
 streamlit
+MarkupSafe
 opencv-python
 Pillow
 numpy
