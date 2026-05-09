@@ -16,23 +16,32 @@ def apply_light_print_theme() -> None:
             --accent-strong: #143a5a;
         }
 
-        .stApp {
-            background: var(--page-bg);
-            color: var(--text);
+        html, body,
+        .stApp,
+        [data-testid="stAppViewContainer"],
+        [data-testid="stMain"],
+        .main {
+            background: var(--page-bg) !important;
+            color: var(--text) !important;
+        }
+
+        .block-container {
+            background: transparent !important;
+            color: var(--text) !important;
         }
 
         [data-testid="stHeader"] {
-            background: rgba(246, 247, 248, 0.96);
-            border-bottom: 1px solid var(--border);
+            background: rgba(246, 247, 248, 0.96) !important;
+            border-bottom: 1px solid var(--border) !important;
         }
 
         [data-testid="stSidebar"] {
-            background: #ffffff;
-            border-right: 1px solid var(--border);
+            background: #ffffff !important;
+            border-right: 1px solid var(--border) !important;
         }
 
         [data-testid="stSidebar"] * {
-            color: var(--text);
+            color: var(--text) !important;
         }
 
         h1, h2, h3, h4, h5, h6, p, label, span, div {
@@ -40,57 +49,66 @@ def apply_light_print_theme() -> None:
         }
 
         h1, h2, h3 {
-            color: #111827;
+            color: #111827 !important;
         }
 
         .stMarkdown, .stText, .stCaption, label, p {
-            color: var(--text);
+            color: var(--text) !important;
         }
 
         small, [data-testid="stCaptionContainer"] {
-            color: var(--muted);
+            color: var(--muted) !important;
         }
 
         [data-testid="stFileUploader"],
         [data-testid="stExpander"],
         [data-testid="stForm"],
         [data-testid="stVerticalBlockBorderWrapper"] {
-            background: var(--panel-bg);
-            border-color: var(--border);
-            border-radius: 8px;
+            background: var(--panel-bg) !important;
+            border-color: var(--border) !important;
+            border-radius: 8px !important;
         }
 
         .stAlert {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            color: var(--text);
+            background: #ffffff !important;
+            border: 1px solid var(--border) !important;
+            color: var(--text) !important;
         }
 
         .stButton > button,
         .stDownloadButton > button,
         button[kind="primary"] {
-            background: var(--accent);
-            border: 1px solid var(--accent-strong);
-            color: #ffffff;
-            border-radius: 6px;
-            font-weight: 600;
+            background: var(--accent) !important;
+            border: 1px solid var(--accent-strong) !important;
+            color: #ffffff !important;
+            border-radius: 6px !important;
+            font-weight: 600 !important;
         }
 
         .stButton > button:hover,
         .stDownloadButton > button:hover {
-            background: var(--accent-strong);
-            border-color: var(--accent-strong);
-            color: #ffffff;
+            background: var(--accent-strong) !important;
+            border-color: var(--accent-strong) !important;
+            color: #ffffff !important;
         }
 
-        input, textarea, [data-baseweb="select"] > div {
-            background: #ffffff;
-            color: var(--text);
-            border-color: var(--border);
+        input, textarea,
+        [data-baseweb="input"] input,
+        [data-baseweb="textarea"],
+        [data-baseweb="select"] > div {
+            background: #ffffff !important;
+            color: var(--text) !important;
+            border-color: var(--border) !important;
+        }
+
+        [data-baseweb="radio"] *,
+        [data-testid="stWidgetLabel"] *,
+        [data-testid="stMarkdownContainer"] * {
+            color: var(--text) !important;
         }
 
         hr {
-            border-color: var(--border);
+            border-color: var(--border) !important;
         }
 
         @media print {

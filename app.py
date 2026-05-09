@@ -1,6 +1,10 @@
 import streamlit as st
 
 from final_system import login_page, main_app
+from ui_theme import apply_light_print_theme
+
+
+apply_light_print_theme()
 
 
 if __name__ == "__main__":
